@@ -1,0 +1,82 @@
+body {
+    background-color: #e6e6e6;
+}
+
+.left {
+    width: 200px;
+    float: left;
+    display: table-cell;
+}
+
+.right {
+    float: right;
+    display: table-cell;
+    font-size:18px;
+    font-weight:bold;
+}
+
+p {
+    color:#CCCCCC;
+    background-color:#0f6661;
+}
+
+.desc {
+    font-size: 150%;
+    text-align: center;
+}
+
+.heading {
+    font-size: 120%;
+    text-align: center;
+    color: #000000;
+}
+
+td {
+    border-bottom: 2px solid #ddc1d8;
+    text-align: center;
+}
+
+#keypad {
+    margin: auto;
+    margin-top: 20px;
+}
+
+#keypad tr td {
+	vertical-align:middle;
+	text-align:center;
+	border:1px solid #000000;
+	font-size:18px;
+	font-weight:bold;
+	width:40px;
+	height:30px;
+	cursor:pointer;
+	background-color: #0f6661;
+	color:#CCCCCC;
+}
+
+input[class=keypad], a.button {
+	font-size:16px;
+	font-weight:bold;
+    width: 12em;
+    height: 2.5em;
+    background-color:Transparent;
+    color:#CCCCCC;
+}
+
+#keypad tr td:hover, input[type=submit]:hover, a.button:hover {
+    background-color:#999999;
+    color:#FFFF00;
+}
+
+a.button {
+     margin-top: 10px;
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    text-decoration: none;
+    color:#CCCCCC;
+    background-color: #0f6661;
+    vertical-align:middle;
+	text-align:center;
+    width: 10em;
+    height: 2em;
+}

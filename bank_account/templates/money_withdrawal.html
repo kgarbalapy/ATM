@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Money withdrawal</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
+</head>
+<body>
+<p id="balance">Balance: {{balance}}</p>
+<p id="msg">Message: {{msg}}</p>
+
+<form id="account" action="/money_withdrawal/" method="post">
+    {% csrf_token %}
+    <div id="main">
+        <fieldset>
+            <legend>Enter amount:</legend>
+            <table id="keypad" cellpadding="5" cellspacing="3">
+                <tr>
+                    <td colspan="3">
+                        <label for="number"></label>
+                        <input id="number" type="text" name="amount" disabled>
+                    </td>
+                </tr>
+                <tr>
+                    <td onclick="addCode('1');">1</td>
+                    <td onclick="addCode('2');">2</td>
+                    <td onclick="addCode('3');">3</td>
+                </tr>
+                <tr>
+                    <td onclick="addCode('4');">4</td>
+                    <td onclick="addCode('5');">5</td>
+                    <td onclick="addCode('6');">6</td>
+                </tr>
+                <tr>
+                    <td onclick="addCode('7');">7</td>
+                    <td onclick="addCode('8');">8</td>
+                    <td onclick="addCode('9');">9</td>
+                </tr>
+                <tr>
+                    <td>*</td>
+                    <td onclick="addCode('0');">0</td>
+                    <td>#</td>
+                </tr>
+                <tr>
+                    <td colspan="3"><input class='keypad' type="submit" value="OK" onclick="validCash()"></td>
+                </tr>
+                <tr>
+                    <td colspan="3" onclick="reset();">RESET</td>
+                </tr>
+            </table>
+        </fieldset>
+    </div>
+</form>
+
+<a href="/transactions" class="button">Back</a><br>
+<a href="/logout" class="button">Exit</a>
+<script src="{% static 'bank_account.js' %}"></script>
+</body>
+</html>

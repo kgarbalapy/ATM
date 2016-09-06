@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PIN</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
+
+</head>
+<body>
+<p id="msg">{{msg}}</p>
+
+<form id="account" action="/check_pin/" method="post">
+    {% csrf_token %}
+    <div id="main">
+        <fieldset>
+            <legend>PIN</legend>
+
+            <table id="keypad" cellpadding="5" cellspacing="3">
+                <tr>
+                    <td colspan="3">
+                        <label for="number"></label>
+                        <input id="number" type="password" name="pin" maxlength="4" disabled>
+                    </td>
+                </tr>
+                <tr>
+                    <td onclick="addCode('1', 'PIN');">1</td>
+                    <td onclick="addCode('2', 'PIN');">2</td>
+                    <td onclick="addCode('3', 'PIN');">3</td>
+                </tr>
+                <tr>
+                    <td onclick="addCode('4', 'PIN');">4</td>
+                    <td onclick="addCode('5', 'PIN');">5</td>
+                    <td onclick="addCode('6', 'PIN');">6</td>
+                </tr>
+                <tr>
+                    <td onclick="addCode('7', 'PIN');">7</td>
+                    <td onclick="addCode('8', 'PIN');">8</td>
+                    <td onclick="addCode('9', 'PIN');">9</td>
+                </tr>
+                <tr>
+                    <td>*</td>
+                    <td onclick="addCode('0', 'PIN');">0</td>
+                    <td>#</td>
+                </tr>
+                <tr>
+                    <td colspan="3"><input id="submit" class='keypad' type="submit" value="OK" disabled onclick="confirm()"></td>
+                </tr>
+                <tr>
+                    <td colspan="3" onclick="reset();">RESET</td>
+                </tr>
+            </table>
+        </fieldset>
+    </div>
+</form>
+<a href="/logout" class="button">Exit</a>
+<script src="{% static 'bank_account.js' %}"></script>
+</body>
+</html>

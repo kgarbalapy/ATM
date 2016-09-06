@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
+    {% if card_id %}
+        <title>Balance</title>
+    {% else %}
+        <title>Message</title>
+    {% endif %}
+</head>
+{% if card_id %}
+    <p>{% now "jS F Y H:i" %}</p>
+    <p id="card_id">Card ID: {{card_id}}</p>
+    <p id="balance">Balance: {{balance}}</p>
+{% else %}
+    <p>{% now "jS F Y" %}</p>
+{% endif %}
+
+<p id="msg">{{msg}}</p>
+
+{% if card_id %}
+    <a href="/money_withdrawal" class="button">Back</a><br>
+{% endif %}
+    <a href="/logout" class="button">Exit</a>
+</body>
+</html>

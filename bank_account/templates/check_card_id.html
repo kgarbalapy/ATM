@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Card ID</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
+</head>
+<body>
+<p id="msg">{{msg}}</p>
+
+<form id="account" action="/check_card_id/" method="post">
+    {% csrf_token %}
+    <div id="main">
+        <fieldset>
+            <legend>Enter card ID</legend>
+
+            <table id="keypad" cellpadding="5" cellspacing="3">
+                <tr>
+                    <td colspan="3">
+                        <label for="number"></label>
+                        <input id="number" type="text" name="card_id" maxlength="19" disabled>
+                    </td>
+                </tr>
+                <tr>
+                    <td onclick="addCode('1', 'Dash');">1</td>
+                    <td onclick="addCode('2', 'Dash');">2</td>
+                    <td onclick="addCode('3', 'Dash');">3</td>
+                </tr>
+                <tr>
+                    <td onclick="addCode('4', 'Dash');">4</td>
+                    <td onclick="addCode('5', 'Dash');">5</td>
+                    <td onclick="addCode('6', 'Dash');">6</td>
+                </tr>
+                <tr>
+                    <td onclick="addCode('7', 'Dash');">7</td>
+                    <td onclick="addCode('8', 'Dash');">8</td>
+                    <td onclick="addCode('9', 'Dash');">9</td>
+                </tr>
+                <tr>
+                    <td>*</td>
+                    <td onclick="addCode('0', 'Dash');">0</td>
+                    <td>#</td>
+                </tr>
+                <tr>
+                    <td colspan="3"><input id="submit" class='keypad' type="submit" value="OK" disabled onclick="deleteDashes()"></td>
+                </tr>
+                <tr>
+                    <td colspan="3" onclick="reset();">RESET</td>
+                </tr>
+            </table>
+        </fieldset>
+    </div>
+</form>
+
+<script src="{% static 'bank_account.js' %}"></script>
+</body>
+</html>

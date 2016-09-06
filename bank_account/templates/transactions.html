@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
+    <title>Transaction</title>
+</head>
+<body>
+<div class="left">
+    <a href="/balance" class="button">Balance</a><br>
+    <a href="/money_withdrawal" class="button">Withdraw the Sum</a><br>
+    <a href="/logout" class="button">Exit</a><br>
+</div>
+
+<div class="right">
+    <p id="card_id">Card ID: {{card_id}}</p>
+    <p>Balance: {{balance}}</p>
+    <p>{% now "jS F Y H:i" %}</p>
+</div>
+
+<h3 class="desc">Transactions</h3>
+<table style="width:100%">
+      <tr>
+        <td class="heading">operation id</td>
+        <td class="heading">operation</td>
+        <td class="heading">balance</td>
+        <td class="heading">withdrawal sum</td>
+        <td class="heading">date</td>
+      </tr>
+    {% for item in transactions%}
+    <tr>
+        <td>{{ forloop.revcounter}}</td>
+        <td>{{ item.get_operation_display }}</td>
+        <td>{{ item.balance }}</td>
+        <td>{{ item.money_withdrawal|default:"-" }}</td>
+        <td>{{ item.date|date:"jS F Y H:i" }}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
